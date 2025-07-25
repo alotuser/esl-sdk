@@ -60,11 +60,11 @@ public class EslOpenRequest {
 	}
 	/**
 	 * 构造应用参数Map
-	 * @return
+	 * @return 参数Map
 	 * @throws EslOpenException
 	 */
 	@SuppressWarnings("rawtypes")
-	public Map<String, String> constructApplicationParamMap() throws EslOpenException {
+	protected Map<String, String> constructApplicationParamMap() throws EslOpenException {
 		try {
 			Map<String, String> paramMap = new TableMap<String, String>();
 			Field[] declaredFields = this.getClass().getDeclaredFields();
@@ -286,51 +286,51 @@ public class EslOpenRequest {
 
 	}
 
-	public String getUri() {
+	protected String getUri() {
 		return this.uri;
 	}
 
-	public void setUri(String uri) {
+	protected void setUri(String uri) {
 		this.uri = uri;
 	}
 
-	public RequestMethodTypeEnum getRequestMethodType() {
+	protected RequestMethodTypeEnum getRequestMethodType() {
 		return requestMethodType;
 	}
 
-	public void setRequestMethodType(RequestMethodTypeEnum requestMethodType) {
+	protected void setRequestMethodType(RequestMethodTypeEnum requestMethodType) {
 		this.requestMethodType = requestMethodType;
 	}
 
-	public RequestContentTypeEnum getRequestContentType() {
+	protected RequestContentTypeEnum getRequestContentType() {
 		return requestContentType;
 	}
 
-	public void setRequestContentType(RequestContentTypeEnum requestContentType) {
+	protected void setRequestContentType(RequestContentTypeEnum requestContentType) {
 		this.requestContentType = requestContentType;
 	}
 
-	public SystemParam getSystemParam() {
+	protected SystemParam getSystemParam() {
 		return this.systemParam;
 	}
 
-	public void setSystemParam(SystemParam systemParam) {
+	protected void setSystemParam(SystemParam systemParam) {
 		this.systemParam = systemParam;
 	}
 
-	public TableMap<String, String> getRequestForm() {
+	protected TableMap<String, String> getRequestForm() {
 		return requestForm;
 	}
 
-	public void setRequestForm(TableMap<String, String> requestForm) {
+	protected void setRequestForm(TableMap<String, String> requestForm) {
 		this.requestForm = requestForm;
 	}
 
-	public String getRequestBody() {
+	protected String getRequestBody() {
 		return requestBody;
 	}
 
-	public void setRequestBody(String requestBody) {
+	protected void setRequestBody(String requestBody) {
 		this.requestBody = requestBody;
 	}
 
@@ -342,11 +342,11 @@ public class EslOpenRequest {
 		EslOpenRequest.timeout = timeout;
 	}
 
-	public boolean getIsAsync() {
+	protected boolean getIsAsync() {
 		return this.isAsync;
 	}
 
-	public void setIsAsync(boolean isAsync) {
+	protected void setIsAsync(boolean isAsync) {
 		this.isAsync = isAsync;
 	}
 
