@@ -59,7 +59,7 @@
 
 ## 四、使用方法
 
-### 初始化系统参数 
+### 初始化系统级参数 
 ``` java
 SystemParam systemParam = new SystemParam("http://192.168.1.40:8080", "your appId", "your appSecret");
 ```
