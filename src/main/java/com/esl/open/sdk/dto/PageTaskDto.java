@@ -1,5 +1,14 @@
 package com.esl.open.sdk.dto;
 
+/**
+ * * *
+ * <p>
+ * 分页任务DTO
+ * </p>
+ * 
+ * @author zdview
+ * @since 2025-07-03
+ */
 public class PageTaskDto extends PicTaskDto {
 
 	/**

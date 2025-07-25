@@ -1,6 +1,13 @@
 package com.esl.open.sdk.response;
 
-
+/**
+ * <p>
+ * ESL Open API响应类
+ * </p>
+ * 
+ * @author zdview
+ * @since 2025-07-03
+ */
 public class EslOpenResponse {
 	
 	private String requestEsl;

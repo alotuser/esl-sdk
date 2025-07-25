@@ -10,6 +10,18 @@ import com.esl.open.sdk.exception.EslOpenException;
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.StrUtil;
 
+/**
+ * *
+ * <p>
+ * 读取配置文件工具类
+ * </p>
+ * <p>
+ * 读取环境配置文件environment.properties
+ * </p>
+ * 
+ * @author zdview
+ * @since 2025-07-03
+ */
 public class PropertiesUtil {
 	private static int socketTimeOut = 5000;
 	private static int connectTimeOut = 3000;

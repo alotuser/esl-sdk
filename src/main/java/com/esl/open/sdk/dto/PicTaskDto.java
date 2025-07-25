@@ -4,6 +4,15 @@ import java.util.List;
 
 import com.esl.open.sdk.constants.SystemConstants;
 
+/**
+ * *
+ * <p>
+ * 图片任务DTO
+ * </p>
+ * 
+ * @author zdview
+ * @since 2025-07-03
+ */
 public class PicTaskDto {
 	/**
 	 *  任务唯一id

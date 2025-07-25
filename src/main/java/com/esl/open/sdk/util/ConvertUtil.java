@@ -10,6 +10,15 @@ import com.esl.open.sdk.domain.SystemParam;
 
 import cn.hutool.json.JSONUtil;
 
+/**
+ * * *
+ * <p>
+ * 转换工具类
+ * </p>
+ * 
+ * @author zdview
+ * @since 2025-07-03
+ */
 public class ConvertUtil {
 
 	public static Map<String, String> convertToMap(Object object) throws Exception {

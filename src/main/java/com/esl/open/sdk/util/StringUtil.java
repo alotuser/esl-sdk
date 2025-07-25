@@ -1,5 +1,14 @@
 package com.esl.open.sdk.util;
 
+/**
+ * *
+ * <p>
+ * 字符串工具类
+ * </p>
+ * 
+ * @author zdview
+ * @since 2025-07-03
+ */
 public class StringUtil {
 
 	public static boolean isBlank(Object o) {

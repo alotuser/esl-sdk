@@ -1,7 +1,11 @@
 package com.esl.open.sdk.dto;
 
 import java.util.List;
-
+/**
+ * * <p>删除任务DTO</p>
+ * @author zdview
+ * @since 2025-07-03
+ */
 public class DelTaskDto {
 
 	
