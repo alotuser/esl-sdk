@@ -25,12 +25,12 @@ public class ConvertUtil {
 		if (object == null) {
 			return Collections.emptyMap();
 		} else {
-			Map<String, String> resultMap = new HashMap();
+			Map<String, String> resultMap = new HashMap<String, String>();
 			Field[] fields = object.getClass().getDeclaredFields();
 			if (fields != null && fields.length != 0) {
 				for (Field field : fields) {
 					field.setAccessible(true);
-					Class typeClazz = field.getType();
+					Class<?> typeClazz = field.getType();
 					String key = field.getName();
 					String val = null;
 					if (List.class.isAssignableFrom(typeClazz)) {
@@ -52,7 +52,7 @@ public class ConvertUtil {
 	}
 
 	public static Map<String, String> convertSystemParamsToMap(SystemParam systemParam) {
-		Map<String, String> resultMap = new HashMap();
+		Map<String, String> resultMap = new HashMap<String, String>();
 		resultMap.put("timestamp", String.valueOf(System.currentTimeMillis() / 1000L));
 		resultMap.put("app_id", systemParam.getAppId());
 		resultMap.put("appSecret", systemParam.getAppSecret());
