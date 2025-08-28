@@ -18,6 +18,7 @@ import com.esl.open.sdk.request.SendPicTaskRequest;
 import com.esl.open.sdk.response.EslOpenResponse;
 
 import cn.hutool.core.collection.ListUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 
 public class EslTests {
@@ -25,7 +26,7 @@ public class EslTests {
 	/**
 	 * 系统级参数
 	 */
-	public static SystemParam systemParam = new SystemParam("http://192.168.1.40:8080", "your appId", "your appSecret");
+	public static SystemParam systemParam = new SystemParam("http://192.168.1.12:8080", "your appId", "your appSecret");
 
 	/**
 	 * 系统健康接口
@@ -109,8 +110,9 @@ public class EslTests {
 		task.setLight(10);
 		task.setPageNo(1);
 		task.setStartTime("2025-07-25 18:30:56");
-		task.setTagId(569319926);
-		task.setTid("1234");
+		task.setTagId(860140L);
+		task.setTid(generateTID());
+		
 		
 		SendLedTaskRequest request = new SendLedTaskRequest(systemParam,ListUtil.of(task));
 		
@@ -127,8 +129,8 @@ public class EslTests {
 		// 应用级参数
 		PageTaskDto task=new PageTaskDto();
 		
-		task.setTid("1235");
-		task.setTagId(569319926);
+		task.setTid(generateTID());
+		task.setTagId(860140L);
 		task.setPageNo(1);
 		task.setStartTime("2025-07-25 18:30:56");
 		task.setEndTime("2025-07-26 18:33:56");
@@ -149,10 +151,10 @@ public class EslTests {
 		// 应用级参数
 		PicTaskDto task=new PicTaskDto();
 		
-		task.setTid("1236");
-		task.setTagId(569319926);
+		task.setTid(generateTID());
+		task.setTagId(860140L);
 		task.setPageNo(1);
-		task.setImageSrc("http://139.224.201.5:88/res/templateSvgImg/1926886404438904832/1927527911135178753/20250716/cbd2a2e6f15542a09599c98ac0e243ff.png");
+		task.setImageSrc("http://192.168.1.98:88/res/templateSvgImg/1947904911811362816/1947927272619065345/20250826/baa3a60e461d478192a0236962b77d81.png");
 		
 		SendPicTaskRequest request = new SendPicTaskRequest(systemParam,ListUtil.of(task));
 		
@@ -160,7 +162,10 @@ public class EslTests {
 
 		System.out.println(JSONUtil.toJsonPrettyStr(eslOpenResponse));
 	}
-	
+
+	public static String generateTID() {
+		return StrUtil.toString(System.currentTimeMillis());
+	}
 	
 	public static void main(String[] args) throws EslOpenException, IOException {
 
@@ -171,9 +176,9 @@ public class EslTests {
 		
 		//testGetTaskRequest();
 		//testSendDelTask();
-		testSendLedTask();
+		//testSendLedTask();
 		//testSendPageTask();
-		//testSendPicTask();
+		testSendPicTask();
 		
 		
 

@@ -46,7 +46,7 @@ public class LedTaskDto {
 	/**
 	 *  价签id
 	 */
-	private Integer tagId;
+	private Long tagId;
 
 	/**
 	 *  任务唯一id
@@ -123,13 +123,13 @@ public class LedTaskDto {
 	/**
 	 *  价签id
 	 */
-	public Integer getTagId() {
+	public Long getTagId() {
 		return tagId;
 	}
 	/**
 	 *  价签id
 	 */
-	public void setTagId(Integer tagId) {
+	public void setTagId(Long tagId) {
 		this.tagId = tagId;
 	}
 	/**

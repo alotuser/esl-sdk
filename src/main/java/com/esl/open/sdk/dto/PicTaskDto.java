@@ -22,7 +22,7 @@ public class PicTaskDto {
 	/**
 	 *  价签id
 	 */
-	private Integer tagId;
+	private Long tagId;
 
 	/**
 	 *  页数 1
@@ -56,14 +56,14 @@ public class PicTaskDto {
 	/**
 	 * 价签id
 	 */
-	public Integer getTagId() {
+	public Long getTagId() {
 		return tagId;
 	}
 
 	/**
 	 * 价签id
 	 */
-	public void setTagId(Integer tagId) {
+	public void setTagId(Long tagId) {
 		this.tagId = tagId;
 	}
 

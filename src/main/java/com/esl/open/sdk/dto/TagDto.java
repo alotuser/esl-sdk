@@ -12,7 +12,7 @@ package com.esl.open.sdk.dto;
 public class TagDto {
 
 	// 价签id
-	private Integer tagId;
+	private Long tagId;
 
 	// 类型
 	private String tagType;
@@ -50,14 +50,14 @@ public class TagDto {
 	/**
 	 * 价签id
 	 */
-	public Integer getTagId() {
+	public Long getTagId() {
 		return tagId;
 	}
 
 	/**
 	 * 价签id
 	 */
-	public void setTagId(Integer tagId) {
+	public void setTagId(Long tagId) {
 		this.tagId = tagId;
 	}
 
