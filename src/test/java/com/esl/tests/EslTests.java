@@ -8,6 +8,7 @@ import com.esl.open.sdk.dto.LedTaskDto;
 import com.esl.open.sdk.dto.PageTaskDto;
 import com.esl.open.sdk.dto.PicTaskDto;
 import com.esl.open.sdk.exception.EslOpenException;
+import com.esl.open.sdk.request.GetCoorRequest;
 import com.esl.open.sdk.request.GetEslRequest;
 import com.esl.open.sdk.request.GetTagRequest;
 import com.esl.open.sdk.request.GetTaskRequest;
@@ -37,6 +38,25 @@ public class EslTests {
 		// 应用级参数
 		GetEslRequest request = new GetEslRequest(systemParam);
 
+		EslOpenResponse eslOpenResponse = request.doRequest();
+
+		System.out.println(JSONUtil.toJsonPrettyStr(eslOpenResponse));
+	}
+	/**
+	 * 获取价签列表
+	 * @throws EslOpenException
+	 * @throws IOException
+	 */
+	public static void testGetCoorRequest() throws EslOpenException, IOException {
+		// 应用级参数
+		GetCoorRequest request = new GetCoorRequest(systemParam);
+		
+		request.setCurrent(1L);
+		request.setSize(10L);
+		request.setCoorId("");
+		request.setVer("");
+		request.setBarcode("");
+		
 		EslOpenResponse eslOpenResponse = request.doRequest();
 
 		System.out.println(JSONUtil.toJsonPrettyStr(eslOpenResponse));
@@ -150,12 +170,31 @@ public class EslTests {
 	public static void testSendPicTask() throws EslOpenException, IOException {
 		// 应用级参数
 		PicTaskDto task=new PicTaskDto();
+		int i=0;
+		task.setTid(generateTID()+i++);
+		task.setTagId(10970800L);
+		task.setPageNo(1);//http://192.168.1.98:88/res/templateSvgImg/13.png
+		task.setImageSrc("http://192.168.1.98:88/res/templateSvgImg/14.png");
 		
-		task.setTid(generateTID());
-		task.setTagId(860140L);
-		task.setPageNo(1);
-		task.setImageSrc("http://192.168.1.98:88/res/templateSvgImg/1947904911811362816/1947927272619065345/20250826/baa3a60e461d478192a0236962b77d81.png");
+//		PicTaskDto task1=new PicTaskDto(),task2=new PicTaskDto(),task3=new PicTaskDto(),task4=new PicTaskDto();
+//		task1.setTid(generateTID()+i++);
+//		task1.setTagId(10970802L);
+//		task1.setImageSrc("http://192.168.1.98:88/res/templateSvgImg/14.png");
+//		
+//		task2.setTid(generateTID()+i++);
+//		task2.setTagId(10970809L);
+//		task2.setImageSrc("http://192.168.1.98:88/res/templateSvgImg/14.png");
+//		
+//		task3.setTid(generateTID()+i++);
+//		task3.setTagId(10971034L);
+//		task3.setImageSrc("http://192.168.1.98:88/res/templateSvgImg/15.png");
+//		
+//		task4.setTid(generateTID()+i++);
+//		task4.setTagId(10970812L);
+//		task4.setImageSrc("http://192.168.1.98:88/res/templateSvgImg/14.png");
 		
+		
+		//http://192.168.1.98:88/res/templateSvgImg/1947904911811362816/1947927272619065345/20250826/baa3a60e461d478192a0236962b77d81.png
 		SendPicTaskRequest request = new SendPicTaskRequest(systemParam,ListUtil.of(task));
 		
 		EslOpenResponse eslOpenResponse = request.doRequest();
@@ -168,20 +207,15 @@ public class EslTests {
 	}
 	
 	public static void main(String[] args) throws EslOpenException, IOException {
-
 		
 		//testGetEslRequest();
-		
+		testGetCoorRequest();
 		//testGetTagRequest();
-		
 		//testGetTaskRequest();
 		//testSendDelTask();
 		//testSendLedTask();
 		//testSendPageTask();
-		testSendPicTask();
-		
-		
-
+		//testSendPicTask();
 
 	}
 

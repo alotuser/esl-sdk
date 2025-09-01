@@ -5,37 +5,36 @@ import com.esl.open.sdk.constants.RequestMethodTypeEnum;
 import com.esl.open.sdk.domain.SystemParam;
 
 /**
- * * <p>获取价签请求</p>
+ * * <p>获取基站请求</p>
  */
-public class GetTagRequest extends EslOpenRequest{
+public class GetCoorRequest extends EslOpenRequest{
 
-	public GetTagRequest(SystemParam systemParam) {
-		super("/getTag", RequestMethodTypeEnum.POST, RequestContentTypeEnum.FORM, systemParam);
+	public GetCoorRequest(SystemParam systemParam) {
+		super("/getCoor", RequestMethodTypeEnum.POST, RequestContentTypeEnum.FORM, systemParam);
+		
 	}
 	/**
 	 * 当前页
 	 */
 	private Long current;
 	/**
-	 * 每页显示条数"
+	 * 每页显示条数
 	 */
 	private Long size;
 	/**
 	 * 价签id
 	 */
-	private String tagId;
+	private String coorId;
 	/**
 	 * 版本
 	 */
 	private String ver;
+	 
 	/**
-	 * tagType
+	 * barcode
 	 */
-	private String tagType;
-	/**
-	 * coorId
-	 */
-	private String coorId;
+	private String barcode;
+	
 	
 	public Long getCurrent() {
 		return current;
@@ -49,11 +48,11 @@ public class GetTagRequest extends EslOpenRequest{
 	public void setSize(Long size) {
 		this.size = size;
 	}
-	public String getTagId() {
-		return tagId;
+	public String getCoorId() {
+		return coorId;
 	}
-	public void setTagId(String tagId) {
-		this.tagId = tagId;
+	public void setCoorId(String coorId) {
+		this.coorId = coorId;
 	}
 	public String getVer() {
 		return ver;
@@ -61,16 +60,10 @@ public class GetTagRequest extends EslOpenRequest{
 	public void setVer(String ver) {
 		this.ver = ver;
 	}
-	public String getTagType() {
-		return tagType;
+	public String getBarcode() {
+		return barcode;
 	}
-	public void setTagType(String tagType) {
-		this.tagType = tagType;
-	}
-	public String getCoorId() {
-		return coorId;
-	}
-	public void setCoorId(String coorId) {
-		this.coorId = coorId;
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
 	}
 }
