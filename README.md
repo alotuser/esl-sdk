@@ -73,7 +73,18 @@ GetEslRequest getEslRequest = new GetEslRequest(systemParam);
 EslOpenResponse healthResp = getEslRequest.doRequest();
 System.out.println(JSONUtil.toJsonPrettyStr(healthResp));
 ```
-###  2. 获取价签列表
+###  2. 获取基站列表
+``` java
+GetCoorRequest request = new GetCoorRequest(systemParam);
+request.setCurrent(1L);
+request.setSize(10L);
+request.setCoorId("");
+request.setVer("");
+request.setBarcode("");
+EslOpenResponse eslOpenResponse = request.doRequest();
+System.out.println(JSONUtil.toJsonPrettyStr(eslOpenResponse));
+```
+###  3. 获取价签列表
 ``` java
 GetTagRequest getTagRequest = new GetTagRequest(systemParam);
 getTagRequest.setCurrent(1L);
@@ -83,7 +94,7 @@ getTagRequest.setVer("");
 EslOpenResponse tagListResp = getTagRequest.doRequest();
 System.out.println(JSONUtil.toJsonPrettyStr(tagListResp));
 ```
-### 3. 获取价签任务列表
+### 4. 获取价签任务列表
 ``` java
 GetTaskRequest getTaskRequest = new GetTaskRequest(systemParam);
 getTaskRequest.setCurrent(1L);
@@ -96,7 +107,7 @@ getTaskRequest.setTid("");
 EslOpenResponse taskListResp = getTaskRequest.doRequest();
 System.out.println(JSONUtil.toJsonPrettyStr(taskListResp));
 ```
-### 4. 发送价签删除任务
+### 5. 发送价签删除任务
 ``` java
 DelTaskDto delTask = new DelTaskDto();
 delTask.setTids(ListUtil.of("123"));
@@ -104,7 +115,7 @@ SendDelTaskRequest delTaskRequest = new SendDelTaskRequest(systemParam, delTask)
 EslOpenResponse delResp = delTaskRequest.doRequest();
 System.out.println(JSONUtil.toJsonPrettyStr(delResp));
 ```
-### 5. 发送价签LED闪灯任务
+### 6. 发送价签LED闪灯任务
 ``` java
 LedTaskDto ledTask = new LedTaskDto();
 ledTask.setColor(1);
@@ -119,7 +130,7 @@ SendLedTaskRequest ledTaskRequest = new SendLedTaskRequest(systemParam, ListUtil
 EslOpenResponse ledResp = ledTaskRequest.doRequest();
 System.out.println(JSONUtil.toJsonPrettyStr(ledResp));
 ```
-### 6. 发送价签切页图片任务
+### 7. 发送价签切页图片任务
 ``` java
 PageTaskDto pageTask = new PageTaskDto();
 pageTask.setTid("1235");
@@ -132,7 +143,7 @@ SendPageTaskRequest pageTaskRequest = new SendPageTaskRequest(systemParam, ListU
 EslOpenResponse pageResp = pageTaskRequest.doRequest();
 System.out.println(JSONUtil.toJsonPrettyStr(pageResp));
 ```
-### 7. 发送价签图片任务
+### 8. 发送价签图片任务
 ``` java
 PicTaskDto picTask = new PicTaskDto();
 picTask.setTid("1236");
