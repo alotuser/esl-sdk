@@ -2,6 +2,7 @@ package com.esl.open.sdk.request;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -66,7 +67,7 @@ public class EslOpenRequest {
 	@SuppressWarnings("rawtypes")
 	protected Map<String, String> constructApplicationParamMap() throws EslOpenException {
 		try {
-			Map<String, String> paramMap = new TableMap<String, String>();
+			Map<String, String> paramMap = new HashMap<String, String>();
 			Field[] declaredFields = this.getClass().getDeclaredFields();
 			if (declaredFields != null && declaredFields.length != 0) {
 				for (Field declaredField : declaredFields) {

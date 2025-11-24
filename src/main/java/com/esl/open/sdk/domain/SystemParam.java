@@ -1,8 +1,18 @@
 package com.esl.open.sdk.domain;
+
 /**
- * * <p>系统级参数</p>
+ * *
+ * <p>
+ * 系统级参数
+ * </p>
  */
 public class SystemParam {
+
+	public static final String APP_ID = "appId";
+	public static final String APP_SECRET = "appSecret";
+	public static final String APP_POI_ACCESS_TOKEN = "appPoiAccessToken";
+	public static final String APPID = "app_id";
+	public static final String TIMESTAMP = "timestamp";
 
 	private String appUrl;
 	private String appId;
@@ -10,13 +20,11 @@ public class SystemParam {
 	private String appPoiAccessToken;
 	private String appPoiCode;
 
-	public SystemParam(String appUrl,String appId, String appSecret) {
-		this.appUrl 	= appUrl;
-		this.appId 		= appId;
-		this.appSecret 	= appSecret;
+	public SystemParam(String appUrl, String appId, String appSecret) {
+		this.appUrl = appUrl;
+		this.appId = appId;
+		this.appSecret = appSecret;
 	}
-
- 
 
 	public String getAppUrl() {
 		return appUrl;

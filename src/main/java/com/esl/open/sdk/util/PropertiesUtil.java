@@ -33,7 +33,11 @@ public class PropertiesUtil {
 	private static boolean isSig = true;
 	private static String sdkVersion = "1.0.1";
 
- 
+	/**
+	 * 获取token文件存放路径
+	 * 
+	 * @return token文件存放路径
+	 */
 	public static String getTokenFilePath() {
 		Properties prop = new Properties();
 		InputStream inputStream = null;
@@ -55,6 +59,11 @@ public class PropertiesUtil {
 		return var4;
 	}
 
+	/**
+	 * 获取是否开启签名验证
+	 * 
+	 * @return 是否开启签名验证
+	 */
 	public static boolean getIsSig() {
 		Properties prop = new Properties();
 		InputStream inputStream = null;
@@ -76,6 +85,11 @@ public class PropertiesUtil {
 		return var4;
 	}
 
+	/**
+	 * 获取token扫描路径
+	 * 
+	 * @return token扫描路径
+	 */
 	public static String getTokenScanPath() {
 		Properties prop = new Properties();
 		InputStream inputStream = null;
@@ -97,6 +111,11 @@ public class PropertiesUtil {
 		return var4;
 	}
 
+	/**
+	 * 获取SDK版本号
+	 * 
+	 * @return SDK版本号
+	 */
 	public static String getSdkersion() {
 		Properties prop = new Properties();
 		InputStream inputStream = null;
@@ -118,6 +137,12 @@ public class PropertiesUtil {
 		return var4;
 	}
 
+	/**
+	 * 获取环境模式
+	 * 
+	 * @return 环境模式
+	 * @throws EslOpenException 异常
+	 */
 	public static String getEnvironmentMode() throws EslOpenException {
 		Properties prop = new Properties();
 		String env = "";
@@ -134,6 +159,12 @@ public class PropertiesUtil {
 		}
 	}
 
+	/**
+	 * 获取环境模式
+	 * 
+	 * @return 环境模式
+	 * @throws EslOpenException 异常
+	 */
 	public static String getAPIUrl() throws EslOpenException {
 		Properties prop = new Properties();
 		String url = "";
@@ -150,6 +181,12 @@ public class PropertiesUtil {
 		}
 	}
 
+	/**
+	 * 获取SocketTimeOut
+	 * 
+	 * @return SocketTimeOut
+	 * @throws IOException 异常
+	 */
 	public static int getSocketTimeOut() throws IOException {
 		Properties prop = new Properties();
 		String env = "";
@@ -171,6 +208,12 @@ public class PropertiesUtil {
 		}
 	}
 
+	/**
+	 * 获取ConnectTimeOut
+	 * 
+	 * @return ConnectTimeOut
+	 * @throws IOException 异常
+	 */
 	public static int getConnectTimeOut() throws IOException {
 		Properties prop = new Properties();
 		InputStream inputStream = null;
@@ -200,6 +243,12 @@ public class PropertiesUtil {
 		return var4;
 	}
 
+	/**
+	 * 获取ConnectRequestTimeOut
+	 * 
+	 * @return ConnectRequestTimeOut
+	 * @throws IOException 异常
+	 */
 	public static int getConnectRequestTimeOut() throws IOException {
 		Properties prop = new Properties();
 		InputStream inputStream = null;
@@ -231,6 +280,12 @@ public class PropertiesUtil {
 		return var4;
 	}
 
+	/**
+	 * 获取HttpClientPoolMaxTotal
+	 * 
+	 * @return HttpClientPoolMaxTotal
+	 * @throws IOException 异常
+	 */
 	public static int getHttpClientPoolMaxTotal() {
 		Properties prop = new Properties();
 		InputStream inputStream = null;
@@ -264,6 +319,12 @@ public class PropertiesUtil {
 		return var4;
 	}
 
+	/**
+	 * 获取HttpClientPoolDefaultMaxPerRoute
+	 * 
+	 * @return HttpClientPoolDefaultMaxPerRoute
+	 * @throws IOException 异常
+	 */
 	public static int getHttpClientPoolDefaultMaxPerRoute() {
 		Properties prop = new Properties();
 		InputStream inputStream = null;
@@ -297,6 +358,12 @@ public class PropertiesUtil {
 		return var4;
 	}
 
+	/**
+	 * 获取HttpClientPoolMaxPerRoute
+	 * 
+	 * @return HttpClientPoolMaxPerRoute
+	 * @throws IOException 异常
+	 */
 	public static int getHttpClientPoolMaxPerRoute() {
 		Properties prop = new Properties();
 		InputStream inputStream = null;
