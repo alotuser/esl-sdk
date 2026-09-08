@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import com.esl.open.sdk.constants.RequestContentTypeEnum;
 import com.esl.open.sdk.constants.RequestMethodTypeEnum;
@@ -19,8 +20,12 @@ import cn.hutool.core.map.TableMap;
 import cn.hutool.core.net.url.UrlBuilder;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
+import cn.hutool.http.HttpStatus;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.http.Method;
+import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 
 /**
  * *
@@ -37,14 +42,16 @@ public class EslOpenRequest {
 	private RequestContentTypeEnum requestContentType;
 	private SystemParam systemParam;
 
-	protected TableMap<String, String> requestForm;
-	protected String requestBody;
+	private TableMap<String, String> requestForm;
+	private String requestBody;
 
 	private boolean isAsync;
 	protected static Set<Class<?>> BASIC_PARAM_TYPE_SET = new HashSet<Class<?>>();
 
 	protected static int timeout = 30000;
 
+	private static final String RECORDS_PATH = "data.records";
+	
 	public EslOpenRequest(String uri, RequestMethodTypeEnum requestMethodType, RequestContentTypeEnum requestContentType, SystemParam systemParam) {
 		this.uri = uri;
 		this.requestMethodType = requestMethodType;
@@ -105,6 +112,22 @@ public class EslOpenRequest {
 //	        paramMap.put("request_source", "sg_open_sdk-" + sdkVersion);
 	}
 
+ 
+	
+	public void doRequest(Consumer<JSONArray> recordsConsumer) throws EslOpenException, IOException {
+	    EslOpenResponse resp = this.doRequest();
+	    if (recordsConsumer != null) {
+	    	if (HttpStatus.HTTP_OK==resp.getStatus()) {
+	    		JSONObject jo = JSONUtil.parseObj(resp.getRequestResult());
+				JSONArray  recordsJsonArray= (JSONArray) jo.getByPath(RECORDS_PATH);
+				recordsConsumer.accept(recordsJsonArray);
+			}
+	    }
+	}
+	
+	
+	
+	
 	/**
 	 * 执行请求
 	 * 
@@ -135,12 +158,12 @@ public class EslOpenRequest {
 
 				res = httpRequest.formStr(applicationParamMap).timeout(timeout).execute(isAsync);
 
-				eslOpenResponse.setBaseString(res.getStatus() + "");
+				eslOpenResponse.setStatus(res.getStatus());
 				eslOpenResponse.setRequestResult(res.body());
 				break;
 			case BODY:
 				res = httpRequest.body(requestBody).timeout(timeout).execute(isAsync);
-				eslOpenResponse.setBaseString(res.getStatus() + "");
+				eslOpenResponse.setStatus(res.getStatus());
 				eslOpenResponse.setRequestResult(res.body());
 				break;
 
@@ -319,19 +342,19 @@ public class EslOpenRequest {
 		this.systemParam = systemParam;
 	}
 
-	protected TableMap<String, String> getRequestForm() {
+	public TableMap<String, String> getRequestForm() {
 		return requestForm;
 	}
 
-	protected void setRequestForm(TableMap<String, String> requestForm) {
+	public void setRequestForm(TableMap<String, String> requestForm) {
 		this.requestForm = requestForm;
 	}
 
-	protected String getRequestBody() {
+	public String getRequestBody() {
 		return requestBody;
 	}
 
-	protected void setRequestBody(String requestBody) {
+	public void setRequestBody(String requestBody) {
 		this.requestBody = requestBody;
 	}
 

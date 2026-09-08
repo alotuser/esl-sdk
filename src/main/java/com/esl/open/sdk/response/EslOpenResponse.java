@@ -13,6 +13,7 @@ public class EslOpenResponse {
 	private String requestEsl;
     private String requestResult;
     private String baseString;
+    private int status;
     
 	public String getRequestEsl() {
 		return requestEsl;
@@ -32,8 +33,11 @@ public class EslOpenResponse {
 	public void setBaseString(String baseString) {
 		this.baseString = baseString;
 	}
-
-
-    
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
     
 }
