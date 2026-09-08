@@ -20,12 +20,8 @@ import cn.hutool.core.map.TableMap;
 import cn.hutool.core.net.url.UrlBuilder;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
-import cn.hutool.http.HttpStatus;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.http.Method;
-import cn.hutool.json.JSONArray;
-import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
 
 /**
  * *
@@ -50,7 +46,6 @@ public class EslOpenRequest {
 
 	protected static int timeout = 30000;
 
-	private static final String RECORDS_PATH = "data.records";
 	
 	public EslOpenRequest(String uri, RequestMethodTypeEnum requestMethodType, RequestContentTypeEnum requestContentType, SystemParam systemParam) {
 		this.uri = uri;
@@ -113,20 +108,19 @@ public class EslOpenRequest {
 	}
 
  
-	
-	public void doRequest(Consumer<JSONArray> recordsConsumer) throws EslOpenException, IOException {
-	    EslOpenResponse resp = this.doRequest();
-	    if (recordsConsumer != null) {
-	    	if (HttpStatus.HTTP_OK==resp.getStatus()) {
-	    		JSONObject jo = JSONUtil.parseObj(resp.getRequestResult());
-				JSONArray  recordsJsonArray= (JSONArray) jo.getByPath(RECORDS_PATH);
-				recordsConsumer.accept(recordsJsonArray);
-			}
-	    }
+	/**
+	 * 执行请求并处理响应
+	 * 
+	 * @param recordsConsumer 响应处理器
+	 * @throws EslOpenException 请求异常
+	 * @throws IOException      IO异常
+	 */
+	public void doRequest(Consumer<EslOpenResponse> recordsConsumer) throws EslOpenException, IOException {
+		EslOpenResponse resp = this.doRequest();
+		if (recordsConsumer != null) {
+			recordsConsumer.accept(resp);
+		}
 	}
-	
-	
-	
 	
 	/**
 	 * 执行请求
